@@ -10,13 +10,17 @@ import org.apache.commons.math3.distribution.NormalDistribution;
 
 public class NormCdf
 {
-    @FXML private TextField input;
+    @FXML private TextField mu_input;
+    @FXML private TextField sd_input;
+    @FXML private TextField lb_input;
+    @FXML private TextField ub_input;
     
+    /* this is from data
     @FXML
     public void normCdf() throws IOException
     {
         out.println("--Performing Norm Cdf--");
-        //BasicStats bs = new BasicStats();
+        BasicStats bs = new BasicStats();
 
         String datum = input.getText();
         String[] data = datum.split(" ");
@@ -27,20 +31,22 @@ public class NormCdf
             nums[i] = Double.parseDouble(data[i]);
         out.printf("Number list : %s\n", Arrays.toString(nums));
 
-        // double mu = bs.mean(nums);
-        // double sigma = bs.sd(nums);
+        double mu = bs.mean(nums);
+        double sigma = bs.sd(nums);
 
-        /* 
-        TODO
-        -learn what integrals are
-        -learn how to somehow implement that into java
-        -get it to work :)
-
-        -maybe do norm pdf instead for the time being
-
-        https://en.wikipedia.org/wiki/Integral
-        https://wikimedia.org/api/rest_v1/media/math/render/svg/ddb34c627654227d595a7b0cecc9a631da7a8db7
-        */
+        NormalDistribution N = new NormalDistribution(mu, sigma);
+    }*/
+    
+    @FXML
+    public void normCdf() throws IOException
+    {
+        double mean = Double.parseDouble(mu_input.getText());
+        double sd = Double.parseDouble(sd_input.getText());
+        NormalDistribution N = new NormalDistribution(mean, sd);
+        
+        double ub = Double.parseDouble(ub_input.getText());
+        double lb = Double.parseDouble(lb_input.getText());
+        return N.cumulativeProbability(lb, ub);
     }
 
     @FXML
