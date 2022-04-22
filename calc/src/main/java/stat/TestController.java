@@ -12,15 +12,15 @@ public class TestController
     }
 
     @FXML
-    public void switchToNumerical() throws IOException
+    public void switchToZ() throws IOException
     {
-        App.setRoot("numerical_tests");
+        App.setRoot("z_tests");
     }
 
     @FXML
-    public void switchToProportional() throws IOException
+    public void switchToT() throws IOException
     {
-        App.setRoot("proportional_tests");
+        App.setRoot("t_tests");
     }
 
     @FXML

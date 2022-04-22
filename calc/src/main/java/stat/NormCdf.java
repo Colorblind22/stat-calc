@@ -1,9 +1,11 @@
 package stat;
 
-import java.io.IOException;
-import javafx.fxml.FXML;
-import java.util.Arrays;
 import static java.lang.System.out;
+import java.io.IOException;
+import java.util.Arrays;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
@@ -15,11 +17,14 @@ public class NormCdf
     @FXML private TextField lb_input;
     @FXML private TextField ub_input;
     
-    /* this is from data
+    @FXML private TextField input;
+
+    @FXML private Label label;
+
     @FXML
-    public void normCdf() throws IOException
+    public void normCdf_data() throws IOException
     {
-        out.println("--Performing Norm Cdf--");
+        out.println("--Performing Norm Cdf from Data--");
         BasicStats bs = new BasicStats();
 
         String datum = input.getText();
@@ -35,18 +40,45 @@ public class NormCdf
         double sigma = bs.sd(nums);
 
         NormalDistribution N = new NormalDistribution(mu, sigma);
-    }*/
-    
+
+        double ub = Double.parseDouble(ub_input.getText());
+        double lb = Double.parseDouble(lb_input.getText());
+        double eval = N.probability(lb, ub);
+        out.printf("normCdf(%f, %f, %f, %f) = %.6f\n", mu, sigma, lb, ub, eval);
+        label.setText(String.format("%.6f",eval));
+    }
+
     @FXML
-    public void normCdf() throws IOException
+    public void normCdf_stats() throws IOException
     {
+        out.println("--Performing NormCdf from Stats--");
         double mean = Double.parseDouble(mu_input.getText());
         double sd = Double.parseDouble(sd_input.getText());
         NormalDistribution N = new NormalDistribution(mean, sd);
         
         double ub = Double.parseDouble(ub_input.getText());
         double lb = Double.parseDouble(lb_input.getText());
-        return N.cumulativeProbability(lb, ub);
+        double eval = N.probability(lb, ub);
+        out.printf("normCdf(%f, %f, %f, %f) = %.6f\n", mean, sd, lb, ub, eval);
+        label.setText(String.format("%.6f",eval));
+    }
+
+    @FXML
+    public void switchToNormCdfData() throws IOException
+    {
+        App.setRoot("normCdf_data");
+    }
+
+    @FXML
+    public void switchToNormCdfStats() throws IOException
+    {
+        App.setRoot("normCdf_stats");
+    }
+
+    @FXML
+    public void backToNormCdfSelect() throws IOException
+    {
+        App.setRoot("normCdf_select");
     }
 
     @FXML

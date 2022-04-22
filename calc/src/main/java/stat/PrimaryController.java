@@ -16,7 +16,7 @@ public class PrimaryController {
     @FXML
     private void switchToNormCdf() throws IOException
     {
-        App.setRoot("normCdf");
+        App.setRoot("normCdf_select");
     }
 
     

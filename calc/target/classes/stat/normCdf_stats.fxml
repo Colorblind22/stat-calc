@@ -14,8 +14,9 @@
         <TextField fx:id="lb_input" promptText="Lower Bound"/>
         <TextField fx:id="ub_input" promptText="Upper Bound"/>
 
-        <Button fx:id="calculateNormCdf" text="Calculate normCdf" onAction="#normCdf"/>
-        <Button text="Back" onAction="#back"/>
+        <Button fx:id="calculateNormCdf" text="Calculate normCdf" onAction="#normCdf_stats"/>
+        <Label fx:id="label" text=" "/>
+        <Button text="Back" onAction="#backToNormCdfSelect"/>
     </children>
     
     <padding>
