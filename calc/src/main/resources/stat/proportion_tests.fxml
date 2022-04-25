@@ -8,8 +8,9 @@
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stat.TestController">
     <children>
-        <Label text="t Tests"/>
-        <Button text=" t Test"/>
+        <Label text="Proportion Tests"/>
+        <Button text="z test" onAction="#"/>
+        
         
         <Button text="Back" onAction="#back"/>
     </children>

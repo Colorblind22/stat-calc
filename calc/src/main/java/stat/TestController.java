@@ -5,22 +5,34 @@ import javafx.fxml.FXML;
 
 public class TestController
 {
-    @FXML
-    public void switchToChiSquared() throws IOException
+    @FXML public void switchToChiSquared() throws IOException
     {
         App.setRoot("chi_squared");
     }
+    @FXML public void switchToGOF() throws IOException
+    {
+        App.setRoot("chi_squared_gof");
+    }
+    @FXML public void switchToHomogeneity() throws IOException
+    {
+        App.setRoot("chi_squared_homogeneity");
+    }
+    @FXML public void switchToIndependence() throws IOException
+    {
+        App.setRoot("chi_squared_association");
+    }
+
 
     @FXML
-    public void switchToZ() throws IOException
+    public void switchToMeans() throws IOException
     {
-        App.setRoot("z_tests");
+        App.setRoot("means_select");
     }
 
     @FXML
-    public void switchToT() throws IOException
+    public void switchToProportions() throws IOException
     {
-        App.setRoot("t_tests");
+        App.setRoot("proportions_select");
     }
 
     @FXML
