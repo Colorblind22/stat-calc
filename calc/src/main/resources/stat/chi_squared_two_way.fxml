@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TextField?>
 
+
+
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stat.ChiSquaredController">
     <children>
-        <Label text="χ2 GOF Test" />
-        <TextField fx:id="observed_input" promptText="Observed"/>
-        <TextField fx:id="expected_input" promptText="Expected"/>
-        <TextField fx:id="df_input" promptText="df"/>
+        <Label text="χ2 Two-Way Test" />
+        <TextField fx:id="size"/>
+        <Button text="Generate" onAction="#generate"/>
 
-        <Button fx:id="calculateNormCdf" text="Calculate χ2 GOF" onAction="#GOF_test"/>
-        <Label fx:id="chi_squared_label" text=" "/>
-        <Label fx:id="p_value_label" text=" "/>
-        <Button text="Back" onAction="#back"/>
+        <GridPane fx:id="matrix" alignment="CENTER">
+            
+        </GridPane>
     </children>
     
     <padding>

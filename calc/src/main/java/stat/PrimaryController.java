@@ -18,6 +18,14 @@ public class PrimaryController {
     {
         App.setRoot("normCdf_select");
     }
-
     
+    @FXML public void switchToDemo() throws IOException
+    {
+        App.setRoot("denmo");
+    }
+
+    @FXML public void back() throws IOException
+    {
+        App.setRoot("primary");
+    }
 }

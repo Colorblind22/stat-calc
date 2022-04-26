@@ -6,13 +6,16 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TextField?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stat.TestController">
+
+
+<GridPane alignment="center" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stat.PrimaryController">
+    <TextField fx:id="entry" promptText="rows cols"/>
+    
+</GridPane>
+<!--
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stat.PrimaryController">
     <children>
-        <Label text="Chi-squared Tests"/>
-        <Button text="Goodness of Fit" onAction="#switchToGOF"/>
-        <Button text="Two-way" onAction="#switchToTwoWay"/>
         
-          
         <Button text="Back" onAction="#back"/>
     </children>
     
@@ -21,3 +24,4 @@
     </padding>
 
 </VBox>
+-->

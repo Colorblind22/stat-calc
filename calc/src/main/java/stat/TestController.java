@@ -13,14 +13,11 @@ public class TestController
     {
         App.setRoot("chi_squared_gof");
     }
-    @FXML public void switchToHomogeneity() throws IOException
+    @FXML public void switchToTwoWay() throws IOException
     {
-        App.setRoot("chi_squared_homogeneity");
+        App.setRoot("chi_squared_two_way");
     }
-    @FXML public void switchToIndependence() throws IOException
-    {
-        App.setRoot("chi_squared_association");
-    }
+
 
 
     @FXML

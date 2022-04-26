@@ -12,7 +12,9 @@ import javafx.fxml.FXML;
 import static java.lang.System.out;
 
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.control.Label;
+import javafx.geometry.Pos;
 
 import org.apache.commons.math3.distribution.ChiSquaredDistribution;
 
@@ -24,6 +26,27 @@ public class ChiSquaredController
 
     @FXML private Label chi_squared_label;
     @FXML private Label p_value_label;
+
+    @FXML private TextField size;
+    @FXML private GridPane matrix;
+
+    @FXML public void generate() throws IOException
+    {
+        String[] nums = size.getText().split(" ");
+        int i = Integer.parseInt(nums[0]);
+        int j = Integer.parseInt(nums[1]);
+        for (int y = 0; y < i; y++) {
+            for (int x = 0; x < j; x++) {
+                // Create a new TextField in each Iteration
+                TextField tf = new TextField();
+                tf.setAlignment(Pos.CENTER);
+                tf.setEditable(true);
+                matrix.setRowIndex(tf, y);
+                matrix.setColumnIndex(tf, x);
+                matrix.getChildren().add(tf);
+            }
+        }
+    }
 
     private double calc_chi_squared(double[] obs, double[] exp)
     {
@@ -37,7 +60,7 @@ public class ChiSquaredController
 
     @FXML public void GOF_test()
     {
-        out.println("--Performing Chi Squared GOF--");
+        out.println("--Performing χ2 GOF--");
         ChiSquaredDistribution cs = new ChiSquaredDistribution(
             Double.parseDouble(df_input.getText())
         );
@@ -54,12 +77,14 @@ public class ChiSquaredController
         }
         out.printf("double lists :\n\t%s\n\t%s\n",Arrays.toString(observed),Arrays.toString(expected));
         double value = calc_chi_squared(observed, expected);
-        out.printf("chi squared :\n\t%f",value);
+        out.printf("chi squared :\n\t%f\n",value);
         double eval = cs.probability(value);
-        out.printf("p-value :\n\t%f", eval);
+        out.printf("p-value :\n\t%f\n", eval);
 
-        chi_squared_label.setText(""+value);
-        p_value_label.setText(""+eval);
+        chi_squared_label.setText(String.format("%.6f", value));
+        p_value_label.setText(String.format("%.6f", eval));
+
+        out.printf("--χ2 GOF Test over--\n");
     }
 
     @FXML public void back() throws IOException
