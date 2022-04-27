@@ -6,15 +6,21 @@ package stat;
 */
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import static java.lang.System.out;
 
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 
 import org.apache.commons.math3.distribution.ChiSquaredDistribution;
 
@@ -29,9 +35,13 @@ public class ChiSquaredController
 
     @FXML private TextField size;
     @FXML private GridPane matrix;
+    @FXML private Button button;
+
+    private int rows;
+    private int cols;
 
     @FXML public void generate() throws IOException
-    {
+    {   
         String[] nums = size.getText().split(" ");
         int i = Integer.parseInt(nums[0]);
         int j = Integer.parseInt(nums[1]);
@@ -44,6 +54,28 @@ public class ChiSquaredController
                 matrix.setRowIndex(tf, y);
                 matrix.setColumnIndex(tf, x);
                 matrix.getChildren().add(tf);
+            }
+        }
+        rows=i;
+        cols=j;
+    }
+
+    @FXML public void two_way_test() throws IOException
+    {
+        int[][] mat = new int[rows][cols];
+        int n = 0;
+        ObservableList<Node> children = matrix.getChildren();
+
+        //this loop for demonstrating matrix input works
+        for(Node d : children)
+            out.println(((TextField) d).getText());
+
+        // this loop is a work in progress for two-way test
+        for(int i = 0; i < cols; i++)
+        {
+            for(int j = 0; j < rows; j++)
+            {
+                mat[i][j] = Integer.parseInt(((TextField)children.get(n++)).getText());
             }
         }
     }
