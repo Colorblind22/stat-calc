@@ -14,7 +14,7 @@
     <children>
         <Label text="χ2 Two-Way Test" />
         <TextField fx:id="size" prefWidth="30"/>
-        <Button text="Generate matrix" onAction="#generate"/>
+        <Button fx:id="button" text="Generate matrix" onAction="#generate"/>
 
         <GridPane fx:id="matrix" alignment="CENTER">
             

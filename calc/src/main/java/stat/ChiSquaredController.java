@@ -1,10 +1,5 @@
 package stat;
 
-/* TODO
-    implement matrix entry and processing
-    do the funny testing
-*/
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,26 +53,58 @@ public class ChiSquaredController
         }
         rows=i;
         cols=j;
+        button.setVisible(false);
     }
 
     @FXML public void two_way_test() throws IOException
     {
-        int[][] mat = new int[rows][cols];
+        double[][] mat = new double[rows][cols];
         int n = 0;
         ObservableList<Node> children = matrix.getChildren();
 
-        //this loop for demonstrating matrix input works
-        for(Node d : children)
-            out.println(((TextField) d).getText());
+        int df = (rows-1)*(cols-1);
+        ChiSquaredDistribution cs = new ChiSquaredDistribution(df);
 
-        // this loop is a work in progress for two-way test
-        for(int i = 0; i < cols; i++)
+        for(int i = 0; i < rows; i++)
         {
-            for(int j = 0; j < rows; j++)
+            for(int j = 0; j < cols; j++)
             {
                 mat[i][j] = Integer.parseInt(((TextField)children.get(n++)).getText());
             }
-        }
+        } // all i can say is; i am so cool this worked first try
+        
+        double[][] expMat = new double[rows][cols]; // expected
+        double[] rowTotals = new double[rows];
+        double[] colTotals = new double[cols];
+        for(int x = 0; x < rows; x++)
+            rowTotals[x] = sum(mat[x]);
+        for(int y = 0; y < rows; y++)
+            for(int z = 0; z < cols; z++)
+                colTotals[y] += mat[z][y];
+
+        int total = 0;
+        for(int p = 0; p < rows; p++)
+            total += sum(mat[p]);
+
+        for(int k = 0; k < rows; k++)
+            for(int l = 0; l < cols; l++)
+                expMat[k][l] = (rowTotals[k]*colTotals[l])/total;
+
+        int chi_squared = 0;
+        for(int q = 0; q < rows; q++)
+            for(int w = 0; w < cols; w++)
+                chi_squared += Math.pow(mat[q][w]-expMat[q][w],2)/expMat[q][w];
+        
+        chi_squared_label.setText(String.format("%.6f",chi_squared));
+        p_value_label.setText(String.format("%.6f",cs.probability(chi_squared)));
+    }
+
+    private double sum(double[] a)
+    {
+        double sum = 0;
+        for(double d : a)
+            sum += d;
+        return sum;
     }
 
     private double calc_chi_squared(double[] obs, double[] exp)
@@ -92,7 +119,7 @@ public class ChiSquaredController
 
     @FXML public void GOF_test()
     {
-        out.println("--Performing χ2 GOF--");
+        out.println("--Performing chi2 GOF--");
         ChiSquaredDistribution cs = new ChiSquaredDistribution(
             Double.parseDouble(df_input.getText())
         );
@@ -116,7 +143,7 @@ public class ChiSquaredController
         chi_squared_label.setText(String.format("%.6f", value));
         p_value_label.setText(String.format("%.6f", eval));
 
-        out.printf("--χ2 GOF Test over--\n");
+        out.printf("--chi2 GOF Test over--\n");
     }
 
     @FXML public void back() throws IOException
