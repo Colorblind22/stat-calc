@@ -18,28 +18,27 @@ public class TestController
         App.setRoot("chi_squared_two_way");
     }
 
-
-
-    @FXML
-    public void switchToMeans() throws IOException
+    @FXML public void switchToMeans() throws IOException
     {
         App.setRoot("means_select");
     }
 
-    @FXML
-    public void switchToProportions() throws IOException
+
+    @FXML public void switchToProportions() throws IOException
     {
-        App.setRoot("proportions_select");
+        App.setRoot("proportion_select");
+    }
+    @FXML public void switchToOnePropZ() throws IOException
+    {
+        App.setRoot("one_prop_z_test");
     }
 
-    @FXML
-    public void back() throws IOException
+
+    @FXML public void back() throws IOException
     {
         App.setRoot("tests");
     }
-
-    @FXML
-    public void mainMenu() throws IOException
+    @FXML public void mainMenu() throws IOException
     {
         App.setRoot("primary");
     }

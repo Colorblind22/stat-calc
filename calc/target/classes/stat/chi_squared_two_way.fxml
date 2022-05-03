@@ -13,13 +13,19 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stat.ChiSquaredController">
     <children>
         <Label text="χ2 Two-Way Test" />
-        <TextField fx:id="size" prefWidth="30"/>
+        <GridPane alignment="CENTER">
+           <TextField promptText="rows cols" fx:id="size"/>
+        </GridPane>
         <Button fx:id="button" text="Generate matrix" onAction="#generate"/>
 
         <GridPane fx:id="matrix" alignment="CENTER">
             
         </GridPane>
+        <Label fx:id="chi_squared_label"/>
+        <Label fx:id="p_value_label"/>
+
         <Button text="Calculate χ2" onAction="#two_way_test"/>
+        <Button text="back" onAction="#back"/>
     </children>
     
     <padding>

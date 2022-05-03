@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stat.ProportionTestsController">
+    <children>
+        <Label text="One Proportion z Test" />
+        <TextField fx:id="mu_input" promptText="Successes"/>
+        <TextField fx:id="sd_input" promptText="n"/>
+        <TextField fx:id="lb_input" promptText="P0"/>
+        <ChoiceBox fx:id="dropdown"/>
+
+        <Button text="Calculate z" onAction="#one_prop_z"/>
+        <Label fx:id="label" text=" "/>
+        <Button text="Back" onAction="#back"/>
+    </children>
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+</VBox>
