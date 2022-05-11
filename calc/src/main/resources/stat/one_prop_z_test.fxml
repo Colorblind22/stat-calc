@@ -6,14 +6,26 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.collections.*?>
+<?import java.lang.String?>
+
+
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stat.ProportionTestsController">
     <children>
         <Label text="One Proportion z Test" />
-        <TextField fx:id="mu_input" promptText="Successes"/>
-        <TextField fx:id="sd_input" promptText="n"/>
-        <TextField fx:id="lb_input" promptText="P0"/>
-        <ChoiceBox fx:id="dropdown"/>
+        <TextField fx:id="x_input" promptText="Successes"/>
+        <TextField fx:id="n_input" promptText="n"/>
+        <TextField fx:id="P0_input" promptText="P0"/>
+        <ChoiceBox fx:id="dropdown" value="prop &gt; P0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="prop &gt; P0"/>
+                    <String fx:value="prop &lt; P0"/>
+                    <String fx:value="prop != P0"/>
+                </FXCollections>
+            </items>
+        </ChoiceBox>
 
         <Button text="Calculate z" onAction="#one_prop_z"/>
         <Label fx:id="label" text=" "/>

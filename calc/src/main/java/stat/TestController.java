@@ -22,7 +22,14 @@ public class TestController
     {
         App.setRoot("means_select");
     }
-
+    @FXML public void switchToOneSampleT() throws IOException
+    {
+        App.setRoot("one_sample_t_test");
+    }
+    @FXML public void switchToTwoSampleT() throws IOException
+    {
+        App.setRoot("two_sample_t_test");
+    }
 
     @FXML public void switchToProportions() throws IOException
     {
