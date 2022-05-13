@@ -14,15 +14,17 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stat.MeanTestsController">
     <children>
         <Label text="One Proportion z Test" />
-        <TextField fx:id="x_input" promptText="Successes"/>
-        <TextField fx:id="n_input" promptText="n"/>
-        <TextField fx:id="P0_input" promptText="P0"/>
+        <TextField fx:id="_input" promptText=""/>
+        <TextField fx:id="_input" promptText="n"/>
+        <TextField fx:id="_input" promptText="P0"/>
+        <TextField fx:id="_input" promptText=""/>
+        <TextField fx:id="_input" promptText=""/>
         <ChoiceBox fx:id="dropdown" value="prop &gt; P0">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="prop &gt; P0"/>
                     <String fx:value="prop &lt; P0"/>
-                    <String fx:value="prop != P0"/>
+                    <String fx:value=" != P0"/>
                 </FXCollections>
             </items>
         </ChoiceBox>

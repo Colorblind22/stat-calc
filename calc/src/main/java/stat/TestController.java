@@ -24,11 +24,11 @@ public class TestController
     }
     @FXML public void switchToOneSampleT() throws IOException
     {
-        App.setRoot("one_sample_t_test");
+        App.setRoot("one_mean_t_test");
     }
     @FXML public void switchToTwoSampleT() throws IOException
     {
-        App.setRoot("two_sample_t_test");
+        App.setRoot("two_mean_t_test");
     }
 
     @FXML public void switchToProportions() throws IOException

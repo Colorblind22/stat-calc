@@ -49,7 +49,7 @@ public class ProportionTestsController
         double eval = norm.cumulativeProbability(z);
         out.printf("z: %f\n\tp-value: %f\n", z, eval);
 
-        eval = process() == 2d ? eval*2 : Math.abs(process() +eval);
+        eval = process() == 2d ? eval*2 : Math.abs(process() +eval); // i forgor 💀
         label.setText(String.format("%.6f",eval));
     }
 

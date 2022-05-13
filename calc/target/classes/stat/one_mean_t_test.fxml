@@ -13,21 +13,22 @@
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stat.MeanTestsController">
     <children>
-        <Label text="One Proportion z Test" />
-        <TextField fx:id="x_input" promptText="Successes"/>
-        <TextField fx:id="n_input" promptText="n"/>
-        <TextField fx:id="P0_input" promptText="P0"/>
-        <ChoiceBox fx:id="dropdown" value="prop &gt; P0">
+        <Label text="One Sample t Test" />
+        <TextField fx:id="mu_input" promptText="Population mean μ"/>
+        <TextField fx:id="xbar_input" promptText="Sample mean"/>
+        <TextField fx:id="sx_input" promptText="Standard deviation of sample mean"/>
+        <TextField fx:id="n_input" promptText="Sample size"/>
+        <ChoiceBox fx:id="dropdown" value="μ &gt; μ0">
             <items>
                 <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="prop &gt; P0"/>
-                    <String fx:value="prop &lt; P0"/>
-                    <String fx:value="prop != P0"/>
+                    <String fx:value="μ &gt; μ0"/>
+                    <String fx:value="μ &lt; μ0"/>
+                    <String fx:value="μ != μ0"/>
                 </FXCollections>
             </items>
         </ChoiceBox>
 
-        <Button text="Calculate z" onAction="#one_prop_z"/>
+        <Button text="Calculate t" onAction="#one_sample_t"/>
         <Label fx:id="label" text=" "/>
         <Button text="Back" onAction="#back"/>
     </children>
