@@ -13,12 +13,13 @@
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stat.MeanTestsController">
     <children>
-        <Label text="One Proportion z Test" />
-        <TextField fx:id="_input" promptText=""/>
-        <TextField fx:id="_input" promptText="n"/>
-        <TextField fx:id="_input" promptText="P0"/>
-        <TextField fx:id="_input" promptText=""/>
-        <TextField fx:id="_input" promptText=""/>
+        <Label text="Two Sample t Test" />
+        <TextField fx:id="xbar1_input" promptText="Sample mean 1"/>
+        <TextField fx:id="sd1_input" promptText="Standard deviation of sample mean 1"/>
+        <TextField fx:id="n1_input" promptText="Sample size 1"/>
+        <TextField fx:id="xbar2_input" promptText="Sample mean 2"/>
+        <TextField fx:id="sd2_input" promptText="Standard deviation of sample mean 2"/>
+        <TextField fx:id="n2_input" promptText="Sample size 2"/>
         <ChoiceBox fx:id="dropdown" value="prop &gt; P0">
             <items>
                 <FXCollections fx:factory="observableArrayList">
