@@ -20,17 +20,17 @@
         <TextField fx:id="xbar2_input" promptText="Sample mean 2"/>
         <TextField fx:id="sd2_input" promptText="Standard deviation of sample mean 2"/>
         <TextField fx:id="n2_input" promptText="Sample size 2"/>
-        <ChoiceBox fx:id="dropdown" value="prop &gt; P0">
+        <ChoiceBox fx:id="dropdown" value="μ1 &gt; μ2">
             <items>
                 <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="prop &gt; P0"/>
-                    <String fx:value="prop &lt; P0"/>
-                    <String fx:value=" != P0"/>
+                    <String fx:value="μ1 &gt; μ2"/>
+                    <String fx:value="μ1 &lt; μ2"/>
+                    <String fx:value="μ1 != μ2"/>
                 </FXCollections>
             </items>
         </ChoiceBox>
 
-        <Button text="Calculate z" onAction="#one_prop_z"/>
+        <Button text="Calculate p-value" onAction="#two_sample_t"/>
         <Label fx:id="label" text=" "/>
         <Button text="Back" onAction="#back"/>
     </children>

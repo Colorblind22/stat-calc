@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.collections.*?>
+<?import java.lang.String?>
+
+
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stat.ProportionTestsController">
+    <children>
+        <Label text="Two Proportion z Test" />
+        <TextField fx:id="x1_input" promptText="Successes 1"/>
+        <TextField fx:id="n1_input" promptText="n1"/>
+        <TextField fx:id="x2_input" promptText="Successes 2"/>
+        <TextField fx:id="n2_input" promptText="n2"/>
+        <ChoiceBox fx:id="dropdown" value="P1 &gt; P2">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="P1 &gt; P2"/>
+                    <String fx:value="P1 &lt; P2"/>
+                    <String fx:value="P1 != P2"/>
+                </FXCollections>
+            </items>
+        </ChoiceBox>
+
+        <Button text="Calculate z" onAction="#two_prop_z"/>
+        <Label fx:id="label" text=" "/>
+        <Button text="Back" onAction="#back"/>
+    </children>
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+</VBox>

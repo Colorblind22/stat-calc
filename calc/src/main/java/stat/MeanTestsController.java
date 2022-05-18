@@ -30,7 +30,7 @@ public class MeanTestsController
 
     @FXML private Label label;
     
-    private double process()
+    private double process_one_sample()
     {
         String compare = dropdown.getValue();
         switch(compare)
@@ -57,9 +57,26 @@ public class MeanTestsController
         double t = (xbar-mu)/(sx/Math.sqrt(n));
         double eval = dist.cumulativeProbability(t);
         out.printf("results :\n\tt: %.6f\n", t);
-        eval = process() == 2d ? eval*2 : Math.abs(process() +eval); // i forgor 💀
+        if(process_one_sample() == 2d)
+            eval = eval >= .5d ? (1-eval)*2 : eval*2;
+        else
+            eval = process_one_sample() == 2d ? eval*2 : Math.abs(process_one_sample() +eval); // i forgor 💀
         out.printf("\tp-value: %.6f\n", eval);
         label.setText(String.format("%.6f", eval));
+    }
+    
+    private double process_two_sample()
+    {
+        String compare = dropdown.getValue();
+        switch(compare)
+        {
+            case "μ1 > μ2":
+                return -1d;
+            case "μ1 < μ2":
+                return 0d;
+            default:
+                return 2d;
+        }
     }
     
     private double two_sample_df(double s1, double n1, double s2, double n2)
@@ -78,10 +95,22 @@ public class MeanTestsController
         double xbar2=Double.parseDouble(xbar2_input.getText());
         double sd2=Double.parseDouble(sd2_input.getText());
         double n2=Double.parseDouble(n2_input.getText());
-        out.printf("inputs:\n\t");
+        out.printf("inputs:\n\t1\n\txbar %.6f\n\tsd %.6f\n\tn %.6f\n\t2\n\txbar %.6f\n\tsd %.6f\n\tn %.6f\n", xbar1, sd1, n1, xbar2, sd2, n2);
         double df = two_sample_df(sd1, n1, sd2, n2);
         
         TDistribution dist = new TDistribution(df);
+
+
+        double v1 = sd1*sd1;
+        double v2 = sd2*sd2;
+        double t = (xbar1-xbar2)/Math.sqrt((v1/n1)+(v2/n2));
+        double eval = dist.cumulativeProbability(t);
+        if(process_two_sample() == 2d)
+            eval = eval < .5d ? eval*2 : (1-eval)*2;
+        else
+            eval = Math.abs(process_two_sample() +eval); // i forgor 💀
+        out.printf("results:\n\tt %.6f\n\tp-value %.6f", t, eval);
+        label.setText(String.format("%.6f",eval));
     }
 
     @FXML public void back() throws IOException

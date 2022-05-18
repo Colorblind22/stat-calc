@@ -39,6 +39,10 @@ public class TestController
     {
         App.setRoot("one_prop_z_test");
     }
+    @FXML public void switchToTwoPropZ() throws IOException
+    {
+        App.setRoot("two_prop_z_test");
+    }
 
 
     @FXML public void back() throws IOException
